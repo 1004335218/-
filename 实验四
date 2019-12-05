@@ -1,0 +1,160 @@
+程序控制结构
+实验目的
+掌握程序的基本结构，进行简单的程序设计
+实验要求
+掌握分支结构（选择结构）基本语法，完成相应的程序练习题。
+掌握循环结构，完成相应的程序练习题。
+掌握异常处理语句。
+
+实验代码
+4.2
+
+str = input('请输入一串字符:')
+e = num = space = other = 0
+for char in str:
+    if 'a' < char < 'z' or 'A' < char < 'Z':
+        e += 1
+    elif '0' < char < '9':
+        num += 1
+    elif char == ' ':
+        space += 1 
+    else:
+        other += 1
+print('英文字符数{},数字数{},空格数{},其他字符数{}'.format(e,num,space,other))
+4.3
+
+a,b = eval(input('输入两个数字，逗号隔开：'))
+if a < b:
+    m,n = b,a
+else:
+    m,n = a,b
+r = m % n
+while m % n:
+    m,n = n,r
+    r = m % n
+bei = a * b / n
+print('最小公倍数{:},最大公约数{:.0f}'.format(n,bei))
+2.8
+
+import turtle
+a = 2
+b = 100
+while b:
+    turtle.pd()
+    turtle.fd(a)
+    turtle.left(90)
+    a += 2
+    b -= 1
+3.5
+
+for i in range(0,11):
+    if i%5 == 0:
+        for a in range(0,11):
+            if a%5 == 0:
+                print('+',end = ' ')
+            else:
+                print('-',end = ' ')
+        print('\n')
+    else:
+        for b in range(0,11):
+            if b%5 == 0:
+                print('|',end = ' ')
+            else:
+                print(' ',end = ' ')
+        print('\n')
+4.1
+
+num2 = 5
+time = 0
+while True:
+    num1 = eval(input('请输入一个数字：'))
+    time += 1
+    if num1 > num2:
+        print('遗憾，太大了')
+    elif num1 < num2:
+        print('遗憾，太小了')
+    else:
+        print('预测{}次，你猜中了！'.format(time))
+        break
+4.4
+
+import random
+num2 = random.randint(0,100)
+time = 0
+while True:
+    num1 = eval(input('请输入一个数字：'))
+    time += 1
+    if num1 > num2:
+        print('遗憾，太大了')
+    elif num1 < num2:
+        print('遗憾，太小了')
+    else:
+        print('预测{}次，你猜中了！'.format(time))
+        break
+4.5
+
+import random
+def guess():
+    while True:
+        global time
+        num1 = input('请输入一个数字：')
+        if num1.isnumeric() == True:
+            time += 1
+            if eval(num1) > num2:
+                print('遗憾，太大了')
+            elif eval(num1) < num2:
+                print('遗憾，太小了')
+            else:
+                print('预测{}次，你猜中了！'.format(time))
+                break
+        else:
+            print('输入内容必须为整数！')
+            continue
+num2 = random.randint(0,100)
+time = 0
+guess()
+4.6
+
+import random
+times = eval(input("请输入你希望模拟的次数："))
+pick_first_n = 0
+pick_change_n = 0
+for i in range(times):
+    car = random.randint(0, 2)
+    pick_first = random.randint(0, 2) 
+    if  pick_first == car: 
+        pick_first_n += 1
+    else:
+        pick_change_n += 1 
+pick_first_percent = pick_first_n / times 
+pick_change_percent = pick_change_n / times 
+print("如果坚持初选，胜率为{:.2f}%".format(pick_first_percent * 100))
+print("如果改变初选，胜率为{:.2f}%".format(pick_change_percent * 100))
+4.21蒙特卡罗方法应用
+分子模拟计算
+1． 使用随机数发生器产生一个随机的分子构型。
+
+2． 对此分子构型的其中粒子坐标做无规则的改变，产生一个新的分子构型。
+
+3． 计算新的分子构型的能量。
+
+4． 比较新的分子构型于改变前的分子构型的能量变化，判断是否接受该构型。若新的分子构型能量低于原分子构型的能量，则接受新的构型，使用这个构型重复再做下一次迭代。 若新的分子构型能量高于原分子构型的能量，则计算玻尔兹曼因子，并产生一个随机数。若这个随机数大于所计算出的玻尔兹曼因子，则放弃这个构型，重新计算。 若这个随机数小于所计算出的玻尔兹曼因子，则接受这个构型，使用这个构型重复再做下一次迭代。
+
+5． 如此进行迭代计算，直至最后搜索出低于所给能量条件的分子构型结束。
+
+项目管理
+
+1．对每一项活动，输入最小、最大和最可能估计数据，并为其选择一种合适的先验分布模型；
+
+2．计算机根据上述输入，利用给定的某种规则，快速实施充分大量的随机抽样
+
+3．对随机抽样的数据进行必要的数学计算，求出结果
+
+4．对求出的结果进行统计学处理，求出最小值、最大值以及数学期望值和单位标准偏差
+
+5．根据求出的统计学处理数据，让计算机自动生成概率分布曲线和累积概率曲线(通常是基于正态分布的概率累积S曲线)
+
+6．依据累积概率曲线进行项目风险分析。
+
+实验总结
+在这次上机中我学会了使用分支结构，循环结构，异常处理语句。在两个小时的上机中，我一共练习了8道题目，通过练习这八道题目，复习了国庆前所学习的分支，循环结构，也学习使用了random库中的函数来生成随机数，还有randint(),choice()等函数的使用。运用random库我对羊车门问题进行了模拟，验证了参赛者更换选择后能否增加猜中汽车的机会，这是一道关于概率的问题，通过这道题我更加明白了python运用范围的广泛，学习python能够为我们的学习生活增加更多的色彩，我们也能学到一种新的思考方式。
